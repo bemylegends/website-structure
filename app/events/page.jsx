@@ -21,9 +21,17 @@ export default function Page() {
       <section className="sec" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="sec-head rv"><span className="kicker">Upcoming</span><h2 className="h2">Next on the calendar.</h2></div>
-          {UPCOMING.length
-            ? UPCOMING.map((e) => <UpcomingFeature key={e.title} e={e} />)
-            : <div className="card beige">The next InvestHack will be announced soon.</div>}
+          {UPCOMING.length ? (
+            <>
+              {/* the nearest event is featured, the rest follow as regular cards */}
+              <UpcomingFeature e={UPCOMING[0]} />
+              {UPCOMING.length > 1 && (
+                <div className="evgrid" style={{ marginTop: 14 }}>
+                  {UPCOMING.slice(1).map((e) => <EventCard key={e.title + e.date} e={e} />)}
+                </div>
+              )}
+            </>
+          ) : <div className="card beige">The next InvestHack will be announced soon.</div>}
         </div>
       </section>
 

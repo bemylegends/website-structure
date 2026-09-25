@@ -18,7 +18,7 @@ export default function Page() {
       </section>
       <section className="sec" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <a className="kn-lead rv" href={lead.url} target="_blank" rel="noopener noreferrer">
+          <Link className="kn-lead rv" href={lead.href}>
             <div className="kn-img"><img src={lead.img} alt="" /></div>
             <div className="kn-txt">
               <span className="kicker">{lead.tag} · Latest</span>
@@ -26,10 +26,10 @@ export default function Page() {
               <p>{lead.excerpt}</p>
               <span className="by">{lead.author} · {lead.date}</span>
             </div>
-          </a>
+          </Link>
           <div className="kn-grid">
             {rest.map((a, i) => (
-              <a key={a.slug} className={'kn rv d' + (i % 3)} href={a.url} target="_blank" rel="noopener noreferrer">
+              <Link key={a.slug} className={'kn rv d' + (i % 3)} href={a.href}>
                 <div className="kn-img"><img loading="lazy" src={a.img} alt="" /></div>
                 <div className="kn-txt">
                   <span className="kicker">{a.tag}</span>
@@ -37,7 +37,7 @@ export default function Page() {
                   <p>{a.excerpt}</p>
                   <span className="by">{a.author} · {a.date}</span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

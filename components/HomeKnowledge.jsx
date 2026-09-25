@@ -15,14 +15,14 @@ export default function HomeKnowledge() {
         </div>
         <div className="kn-grid">
           {ARTICLES.slice(0, 3).map((a, i) => (
-            <a key={a.slug} className={'kn rv d' + i} href={a.url} target="_blank" rel="noopener noreferrer">
+            <Link key={a.slug} className={'kn rv d' + i} href={a.href}>
               <div className="kn-img"><img loading="lazy" src={a.img} alt="" /></div>
               <div className="kn-txt">
                 <span className="kicker">{a.tag}</span>
                 <h3>{a.title}</h3>
                 <span className="by">{a.author} · {a.date}</span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

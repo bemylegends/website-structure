@@ -15,9 +15,9 @@ export default function HomeEvents() {
           </div>
           <Link className="tlink rv" href="/events">All events <Arrow className="" /></Link>
         </div>
-        {UPCOMING.map((e) => <UpcomingFeature key={e.title} e={e} />)}
+        {UPCOMING[0] && <UpcomingFeature e={UPCOMING[0]} />}
         <div className="evgrid" style={{ marginTop: 14 }}>
-          {PAST.slice(0, 3).map((e) => <EventCard key={e.title + e.date} e={e} />)}
+          {[...UPCOMING.slice(1), ...PAST].slice(0, 3).map((e) => <EventCard key={e.title + e.date} e={e} />)}
         </div>
       </div>
     </section>
