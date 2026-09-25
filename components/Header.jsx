@@ -6,10 +6,10 @@ import Arrow from './Arrow';
 
 const NAV = [
   ['/how', 'How it works'],
-  ['/deals', 'Deal flow'],
+  // ['/deals', 'Deal flow'],  — hidden for now, page kept in app/_hidden/deals
   ['/membership', 'Membership'],
-  ['/rooms', 'Rooms'],
-  ['/insights', 'Insights'],
+  ['/events', 'Events'],
+  ['/knowledge', 'Knowledge'],
   ['/about', 'About'],
 ];
 

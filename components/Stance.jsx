@@ -7,7 +7,7 @@ export default function Stance() {
           <div className="stance-card rv">
             <div className="sec-head" style={{margin:"0",alignContent:"start"}}>
               <span className="kicker">What we are not</span>
-              <h2 className="h2">Nobody in the room is here to sell you something.</h2>
+              <h2 className="h2">Nobody in the network is here to sell you something.</h2>
               <p className="fin">Membership is the only revenue. It keeps the incentives simple.</p>
             </div>
             <ul className="nots">

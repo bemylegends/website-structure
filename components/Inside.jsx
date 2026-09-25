@@ -7,7 +7,7 @@ export default function Inside() {
           <div className="row-head">
             <div className="sec-head rv">
               <span className="kicker">Inside Legends</span>
-              <h2 className="h2">The room is part of the product.</h2>
+              <h2 className="h2">Where the network meets in person.</h2>
             </div>
             <p className="lead rv" style={{maxWidth:"420px",fontSize:"16px"}}>Private gatherings, focused sessions and the conversations around them.</p>
           </div>

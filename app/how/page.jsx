@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Band from '@/components/Band';
+import HowFlow from '@/components/HowFlow';
 import HowSteps from '@/components/HowSteps';
 
 export const metadata = { title: "Legends \u2014 How it works" };
@@ -15,11 +16,7 @@ export default function Page() {
           <p className="lead rv d1">Legends works on requests. You tell us what you need now; matching finds the members who fit; the team checks and makes the introduction — only when both sides agree.</p>
         </div>
       </section>
-      <section className="sec" style={{paddingTop:"0"}}>
-        <div className="wrap">
-          <div className="chain rv"><span>You</span><i></i><span>Context</span><i></i><span>Request</span><i></i><span>Relevant member</span><i></i><span>Team check</span><i></i><span className="g">Introduction</span></div>
-        </div>
-      </section>
+      <HowFlow />
       <HowSteps />
       <section className="sec" style={{paddingTop:"0"}}>
         <div className="wrap two">

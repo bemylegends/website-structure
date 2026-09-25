@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Arrow from './Arrow';
 import HeroNetwork from './HeroNetwork';
-import RequestCard from './RequestCard';
+import MatchEngine from './MatchEngine';
 
 export default function Hero() {
   return (
@@ -17,7 +17,7 @@ export default function Hero() {
             <Link className="btn ghost" href="/how">See how it works</Link>
           </div>
         </div>
-        <RequestCard />
+        <div className="me-wrap rv d2"><MatchEngine /></div>
       </div>
     </section>
   );

@@ -25,7 +25,7 @@ export default function Page() {
             <div className="pr rv"><span className="n">01</span><h4>Person first</h4><p>The person is the story. Technology supports the connection.</p></div>
             <div className="pr rv d1"><span className="n">02</span><h4>Relevance over reach</h4><p>One right introduction is worth more than hundreds of weak contacts.</p></div>
             <div className="pr rv d2"><span className="n">03</span><h4>Proof over hype</h4><p>Decisions, experience and results — not generic praise.</p></div>
-            <div className="pr rv d3"><span className="n">04</span><h4>Private, not secretive</h4><p>The room is selective because context and trust matter.</p></div>
+            <div className="pr rv d3"><span className="n">04</span><h4>Private, not secretive</h4><p>The network is selective because context and trust matter.</p></div>
             <div className="pr rv"><span className="n">05</span><h4>Technology disappears</h4><p>We explain the outcome before the mechanism.</p></div>
           </div>
         </div>

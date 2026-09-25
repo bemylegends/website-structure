@@ -26,15 +26,15 @@ export default function Page() {
               <tr><td>Live requests worked by the team</td><td className="y">3</td><td className="y">3</td><td className="y">3</td></tr>
               <tr><td>Double-consent introductions</td><td className="y">✓</td><td className="y">✓</td><td className="y">✓</td></tr>
               <tr><td>Monthly curated deal flow</td><td className="y">✓</td><td className="y">✓</td><td className="y">✓</td></tr>
-              <tr><td>Co-investment room with peers</td><td className="y">✓</td><td className="y">✓</td><td className="y">✓</td></tr>
+              <tr><td>Co-investment circle with peers</td><td className="y">✓</td><td className="y">✓</td><td className="y">✓</td></tr>
               <tr><td>Online sessions, priority at private dinners</td><td className="y">✓</td><td className="y">✓</td><td className="y">✓</td></tr>
               <tr><td>City introductions when you travel</td><td className="y">✓</td><td className="y">✓</td><td className="y">✓</td></tr>
               <tr><td>Requests for companies matching your thesis</td><td className="n">—</td><td className="y">✓</td><td className="y">✓</td></tr>
               <tr><td>Shortlisted first when a request fits your strategy</td><td className="n">—</td><td className="y">✓</td><td className="n">—</td></tr>
               <tr><td>Closed circle of fund peers</td><td className="n">—</td><td className="y">✓</td><td className="n">—</td></tr>
-              <tr><td>Speaker slots, host a thematic room</td><td className="n">—</td><td className="y">✓</td><td className="n">—</td></tr>
+              <tr><td>Speaker slots, host a thematic session</td><td className="n">—</td><td className="y">✓</td><td className="n">—</td></tr>
               <tr><td>Closed demos with vetted companies</td><td className="n">—</td><td className="n">—</td><td className="y">✓</td></tr>
-              <tr><td>Thematic rooms on your industry</td><td className="n">—</td><td className="n">—</td><td className="y">✓</td></tr>
+              <tr><td>Thematic sessions on your industry</td><td className="n">—</td><td className="n">—</td><td className="y">✓</td></tr>
               <tr><td>Seats</td><td>1</td><td>Partners of the fund</td><td>Up to 3</td></tr>
               <tr><td>Entry</td><td>Approval</td><td>Approval + track record</td><td>Company-level approval</td></tr>
             </tbody>

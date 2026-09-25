@@ -5,7 +5,7 @@ import Reveal from '@/components/Reveal';
 
 export const metadata = {
   title: 'Legends — Private investor network',
-  description: 'A private network for people who deploy capital. Deal flow, co-investors and introductions matched to your thesis.',
+  description: 'A private network for people who deploy capital. Co-investors, deals and introductions matched to your thesis.',
 };
 
 export default function RootLayout({ children }) {
