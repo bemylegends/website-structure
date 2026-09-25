@@ -801,3 +801,5 @@ footer{padding:40px 0 32px}
 .ev2-steps li::marker{color:var(--gold-d);font-weight:700}
 @media (max-width:980px){.ev2-grid,.ev2-reg{grid-template-columns:1fr}.ev2-photo{max-width:420px}}
 @media (max-width:640px){.ev2-fit{grid-template-columns:1fr}.ev2-speaker{grid-template-columns:1fr}.ev2-speaker img{width:120px;height:120px}}
+.ev2-recap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:20px}
+.ev2-recap div{aspect-ratio:4/3;border-radius:20px;background:var(--sand) center/cover no-repeat}

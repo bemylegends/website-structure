@@ -31,7 +31,7 @@ Hidden (not routed, kept for later): `app/_hidden/deals` (Deal flow). To bring i
 
 - `components/` — shared sections (Founder, HowSteps, Benefits, Tracks, Stance, Proof, Inside, Band, ApplyFaq, Footer)
   and client components (Header, Hero, HeroNetwork, MatchEngine, HowFlow, ApplyForm, Reveal).
-- `data/events.js` — events (from belegends.club/events). `upcoming: true` puts an event in the Upcoming block; events with `slug` link to an internal page, others to their live URL.
+- `data/events.js` — events (from belegends.club/events). `upcoming: true` puts an event in the Upcoming block; events with `slug` have their own page on this site (content in `eventDetails.js`); the rest (Luma) open their Luma page.
 - `data/eventDetails.js` — full content for event pages (agenda, speaker, access, times, countdown date). To add an event page: add an entry here + `slug` in `events.js`, then copy `app/events/after-20-investments-what-makes-me-say-yes/` to a folder named after the new slug and change `SLUG` inside.
 - `data/knowledge.js` — essays (covers, authors, dates from belegends.club/blog). The full essay text is pulled from the live blog at build time and refreshed hourly by `lib/blog.js`; if the blog is unreachable the page shows the summary and a link to the original.
 - `public/brand/` — founder photo and symbol.

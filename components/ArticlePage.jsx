@@ -51,7 +51,9 @@ export default async function ArticlePage({ slug }) {
               <span className="kicker">From the InvestHack</span>
               <p>{a.eventTitle}</p>
               <small>{a.eventDate}</small>
-              <a className="tlink" href={a.eventUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14 }}>About the event <Arrow className="" /></a>
+              {a.eventUrl.startsWith('/')
+                ? <Link className="tlink" href={a.eventUrl} style={{ fontSize: 14 }}>About the event <Arrow className="" /></Link>
+                : <a className="tlink" href={a.eventUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14 }}>About the event <Arrow className="" /></a>}
             </div>
           </aside>
           <article className="prose">

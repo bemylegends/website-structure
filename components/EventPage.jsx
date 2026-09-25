@@ -6,6 +6,7 @@ import RegisterCard from './RegisterCard';
 import EventCard from './EventCard';
 import { EVENTS, PAST } from '@/data/events';
 import { EVENT_DETAILS } from '@/data/eventDetails';
+import { ARTICLES } from '@/data/knowledge';
 
 const Check = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M5 12l5 5 9-10" /></svg>;
 const Cross = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M6 6l12 12M18 6L6 18" /></svg>;
@@ -15,6 +16,9 @@ export default function EventPage({ slug }) {
   const e = EVENTS.find((x) => x.slug === slug);
   const d = EVENT_DETAILS[slug];
   if (!e || !d) return null;
+  const up = !!e.upcoming;
+  const essay = d.essay && ARTICLES.find((a) => a.slug === d.essay);
+  const others = PAST.filter((x) => x.slug !== slug).slice(0, 3);
 
   return (
     <>
@@ -22,17 +26,26 @@ export default function EventPage({ slug }) {
         <div className="wrap ev2-grid">
           <div>
             <div className="crumbs"><Link href="/">Home</Link><span>/</span><Link href="/events">Events</Link><span>/</span><span>InvestHack</span></div>
-            <span className="kicker" style={{ display: 'block', marginTop: 28 }}>{d.kicker} · {e.upcoming ? 'Upcoming' : 'Past'}</span>
+            <span className="kicker" style={{ display: 'block', marginTop: 28 }}>{d.kicker} · {up ? 'Upcoming' : 'Past event'}</span>
             <h1 className="h1 ev-title rv">{e.title}</h1>
             <p className="lead rv d1">{d.lead}</p>
             <div className="ev2-meta rv d1">
-              <b>Tue, 29 September 2026</b>
+              <b>{d.dateLong}</b>
               <span>{d.times.map(([c, t]) => `${t} ${c}`).join(' · ')}</span>
             </div>
-            {e.upcoming && <div className="rv d2"><Countdown to={d.startsAt} /></div>}
+            {up && <div className="rv d2"><Countdown to={d.startsAt} /></div>}
             <div className="ctas rv d2">
-              <a className="btn gold" href="#register">Request a seat <Arrow /></a>
-              <AddToCalendar title={e.title} start={d.startsAt} durationMin={d.durationMin} />
+              {up ? (
+                <>
+                  <a className="btn gold" href="#register">Request a seat <Arrow /></a>
+                  <AddToCalendar title={e.title} start={d.startsAt} durationMin={d.durationMin} />
+                </>
+              ) : (
+                <>
+                  <Link className="btn gold" href="/login">Watch the recording <Arrow /></Link>
+                  {essay && <Link className="btn ghost" href={essay.href}>Read the essay</Link>}
+                </>
+              )}
             </div>
           </div>
           <div className="ev2-photo rv d1">
@@ -68,20 +81,35 @@ export default function EventPage({ slug }) {
             </div>
           </div>
 
-          <div className="ev2-block ev2-fit rv">
-            <div><span className="kicker">Who it’s for</span><ul className="list">{d.forWho.map((x) => <li key={x}><Check />{x}</li>)}</ul></div>
-            <div><span className="kicker">Not the place for</span><ul className="list no">{d.notFor.map((x) => <li key={x}><Cross />{x}</li>)}</ul></div>
-          </div>
+          {(d.forWho?.length > 0) && (
+            <div className="ev2-block ev2-fit rv">
+              <div><span className="kicker">Who it’s for</span><ul className="list">{d.forWho.map((x) => <li key={x}><Check />{x}</li>)}</ul></div>
+              {d.notFor?.length > 0 && <div><span className="kicker">Not the place for</span><ul className="list no">{d.notFor.map((x) => <li key={x}><Cross />{x}</li>)}</ul></div>}
+            </div>
+          )}
 
-          <div className="ev2-reg rv">
+          {!up && (
+            <div className="ev2-block rv">
+              <span className="kicker">From the session</span>
+              <h2 className="h2 ev2-h">The recording and closed-session notes stay with members.</h2>
+              {d.recap?.length > 0 && <div className="ev2-recap">{d.recap.map((r) => <div key={r} style={{ backgroundImage: `url(${r})` }} />)}</div>}
+              <div className="ctas" style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 22 }}>
+                <Link className="btn" href="/login">Members: watch the recording <Arrow /></Link>
+                <Link className="btn ghost" href="/apply">Apply to join</Link>
+                {essay && <Link className="btn ghost" href={essay.href}>Read the essay: {essay.title}</Link>}
+              </div>
+            </div>
+          )}
+
+          {up && <div className="ev2-reg rv">
             <div>
               <span className="kicker">How access works</span>
               <h2 className="h2 ev2-h">A small group, reviewed by people.</h2>
-              <ol className="ev2-steps">{d.access.map(([t, p]) => <li key={t}><b>{t}.</b> {p}</li>)}</ol>
-              <p className="note-s">{d.note}</p>
+              <ol className="ev2-steps">{(d.access || []).map(([t, p]) => <li key={t}><b>{t}.</b> {p}</li>)}</ol>
+              {d.note && <p className="note-s">{d.note}</p>}
             </div>
             <RegisterCard times={d.times} />
-          </div>
+          </div>}
         </div>
       </section>
 
@@ -91,11 +119,11 @@ export default function EventPage({ slug }) {
             <div className="sec-head rv"><span className="kicker">Past InvestHacks</span><h2 className="h2">Recordings stay with members.</h2></div>
             <Link className="tlink rv" href="/events">All events <Arrow className="" /></Link>
           </div>
-          <div className="evgrid">{PAST.slice(0, 3).map((x) => <EventCard key={x.title + x.date} e={x} />)}</div>
+          <div className="evgrid">{others.map((x) => <EventCard key={x.title + x.date} e={x} />)}</div>
         </div>
       </section>
 
-      {e.upcoming && <a className="ev-sticky" href="#register">Request a seat <Arrow /></a>}
+      {up && <a className="ev-sticky" href="#register">Request a seat <Arrow /></a>}
     </>
   );
 }
