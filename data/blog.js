@@ -1,0 +1,152 @@
+// Investor Intelligence - short pieces on how private investors think and act.
+// Pillars follow the content strategy. To publish: add an object to ARTICLES (newest first).
+// body: array of blocks - a string is a paragraph, ['h', text] is a subheading, ['q', text] is a pull line.
+// Essays by Legends speakers - published on belegends.club/blog (cards link there).
+const F = 'https://belegends.club/api/files/pbc_2248329634';
+export const ESSAYS = [
+  { slug: 'what-happens-when-the-investor-says-not-this-round', title: 'What Happens When the Investor Says “Not This Round”', author: 'Alex Felman', role: 'Felman Family Office', authorRole: 'General Partner, Felman Family Office', date: '1 Oct 2026', read: 7,
+    excerpt: 'Why investors sit out funding rounds, what founders reveal between raises, and when stronger conviction is worth a higher valuation.',
+    img: `${F}/hgvb8prt9f41yhc/alex_felman_article_cover_e19691ijfu.jpg`,
+    eventTitle: 'How a $200M+ Family Office Decides What Gets a $1-10M Direct Investment', eventDate: '29 Sept 2026', eventUrl: 'https://belegends.club/events/after-20-investments-what-makes-me-say-yes' },
+  { slug: 'before-the-numbers-i-read-the-team', title: 'Before the Numbers, I Read the Team', author: 'Janneke Niessen', role: 'Founding Partner, CapitalT', authorRole: 'Founding Partner, CapitalT', date: '23 Sept 2026', read: 11,
+    excerpt: 'How CapitalT looks at traits, human capital, team dynamics and three kinds of entrepreneurial passion, and the Friday afternoon of two calls.',
+    img: `${F}/e06jx3pb9r80nsg/cover_4b41gjmtgy.png`,
+    eventTitle: 'How a Startup With No Revenue Raises Up to €2.5M', eventDate: '22 Sept 2026', eventUrl: 'https://belegends.club/events/how-a-startup-with-no-revenue-raises-up-to-2-5m' },
+  { slug: 'slop-is-not-bad-work', title: 'Slop Is Not Bad Work', author: 'Walied Albasheer', role: 'Intuitio Ventures', authorRole: 'Founder & Managing Partner, Intuitio Ventures', date: '19 Sept 2026', read: 10,
+    excerpt: 'The four gates he now reads through them, and what stayed expensive.',
+    img: `${F}/k7ytcwcb43wf31n/slop_is_not_bad_work_cover_fwvrcsgqe0.png`,
+    eventTitle: 'How a 30-Year Tech Founder Spots Real Companies Behind AI-Perfect Pitches', eventDate: '15 Sept 2026', eventUrl: 'https://belegends.club/events/how-to-spot-real-companies-in-the-age-of-ai' },
+  { slug: 'your-moat-was-never-the-product', title: 'Your Moat Was Never the Product', author: 'Varun Malik', role: 'Konsälidön', authorRole: 'Founder, Konsälidön · former operations leader, PwC Middle East', date: '13 Sept 2026', read: 10,
+    excerpt: 'Why AI leaves distribution as the only moat, and how he counts community in five circles, from 300,000 down to 30.',
+    img: `${F}/nffm1qr8fygcjvi/your_moat_was_never_the_product_1200x630_fwhab3zx6d.png`,
+    eventTitle: 'How to Profit as a Human in an Unforgiving AI World', eventDate: '8 Sept 2026', eventUrl: 'https://belegends.club/events/one-business-hundreds-of-independent-minds' },
+  { slug: 'what-we-mean-when-we-ask-for-ownership', title: 'What We Mean When We Ask for Ownership', author: 'Julius Bachmann', role: 'Bachmann Catalyst', authorRole: 'Founder, Bachmann Catalyst', date: '9 Sept 2026', read: 10,
+    excerpt: 'Nobody defines it, and equity is what pays for it.',
+    img: `${F}/z8c5gc3u1pvmm91/ownership_cover_4ir1ke9mur.png`,
+    eventTitle: 'How to Build Ownership Culture & Care: Insights from 200+ Scale-Up Companies', eventDate: '25 Aug 2026', eventUrl: 'https://belegends.club/events/ownership-culture-and-care' },
+  { slug: 'what-is-not-core-i-make-it-my-core', title: 'What Is Not Core to a Company, I Make It My Core', author: 'Vijay Sivaram', role: 'RVAI Global', authorRole: 'Co-founder, RVAI Global · former CEO, Quess Corp IT staffing', date: '9 Sept 2026', read: 10,
+    excerpt: 'Why what is not core to a company became his core, and where that same move now runs from India’s capability centers to AI.',
+    img: `${F}/mh60v20zlafagoy/not_core_cover_pmvx9afqv2.png`,
+    eventTitle: 'Legends InvestHack #1: How to Build a $2B Company and Manage 650k+ People', eventDate: '11 Aug 2026', eventUrl: 'https://luma.com/gxeiw4sg' },
+].map((e) => ({ ...e, url: `/blog/${e.slug}`, original: `https://belegends.club/blog/${e.slug}` }));
+export const essay = (slug) => ESSAYS.find((e) => e.slug === slug);
+
+export const PILLARS = [
+  ['think', 'How investors think'],
+  ['capital', 'Private capital explained'],
+  ['market', 'Market & deal intelligence'],
+  ['pov', 'Legends point of view'],
+];
+export const pillarName = (k) => (PILLARS.find(([p]) => p === k) || [, ''])[1];
+
+export const ARTICLES = [
+  {
+    slug: 'aum-is-not-dry-powder',
+    pillar: 'capital',
+    date: '2 October 2026',
+    read: 3,
+    title: 'AUM is not dry powder',
+    lede: 'A $500M fund may have almost no money left to invest. Fund size tells you how much was raised. Dry powder tells you what can still be deployed.',
+    body: [
+      'When a manager says they run a $500M fund, most people hear “$500M to invest”. That is rarely true. The headline number describes the capital that was raised, not the capital that is still available.',
+      ['h', 'Two different numbers'],
+      'Assets under management (AUM) usually combines the current value of investments already made with commitments that have not been called yet. Definitions vary between managers, which is why the number alone says little.',
+      'Dry powder is narrower: capital that investors have committed to the fund but the manager has not yet called or deployed. It is the part that can still go into a new deal.',
+      ['q', 'Fund size is history. Dry powder is capacity.'],
+      ['h', 'Why it matters in a conversation'],
+      'A fund in year four of a five-year investment period may be largely invested. It can still be an excellent partner - but for follow-ons, reserves or the next vintage, not for a fresh $20M cheque this quarter.',
+      'Before spending time on a pitch or a co-investment discussion, it is worth asking three plain questions: how much of the fund is still uncalled, how much is reserved for existing portfolio companies, and when the investment period ends.',
+      'The answers tell you whether you are talking to live capital or to a track record.',
+    ],
+  },
+  {
+    slug: 'great-company-not-great-investment',
+    pillar: 'think',
+    date: '29 September 2026',
+    read: 3,
+    title: 'A great company is not automatically a great investment',
+    lede: 'Entry price changes the return profile, the next-round hurdle and the downside. Valuation is part of the thesis, not a detail after it.',
+    body: [
+      'Experienced investors regularly pass on companies they admire. It looks contradictory until you separate the quality of the business from the quality of the deal.',
+      ['h', 'Price sets the hurdle'],
+      'The same company can be a strong investment at one valuation and a weak one at another. If you enter at a high price, the company has to grow into it before it can grow for you - and the next round has to clear an even higher bar.',
+      ['q', 'You do not buy the company. You buy a price for a share of its future.'],
+      ['h', 'Price shapes the downside'],
+      'A rich entry valuation leaves less room for things to go wrong. A flat or down round, a slower exit market or a longer path to profit hurts far more when the starting point was stretched. Terms such as liquidation preferences can soften this, but they do not replace a sensible price.',
+      ['h', 'What disciplined investors ask'],
+      'What has to be true for this price to work? What return does it imply at a realistic exit? What happens to us if the next round is flat? If the answers depend on everything going right, the company can be great and the investment still not be.',
+    ],
+  },
+  {
+    slug: 'deal-flow-is-not-more-deals',
+    pillar: 'think',
+    date: '24 September 2026',
+    read: 2,
+    title: 'The best deal flow is rarely just about more deals',
+    lede: 'Who introduced the opportunity, what they know and why they trust the founder can change how an investor reads the risk.',
+    body: [
+      'Most investors are not short of opportunities. Inboxes are full of decks. What is scarce is context - the information that sits around a deal rather than inside the data room.',
+      ['h', 'Context travels with the introduction'],
+      'An opportunity that comes from someone who has invested alongside the founder, sat on their board or worked with them for years arrives with judgement attached. You learn how the team behaves under pressure, not only what the model says.',
+      ['q', 'A trusted introduction is due diligence that started before you did.'],
+      ['h', 'Fewer, better, earlier'],
+      'Better sourcing often means seeing fewer deals - but seeing the right ones earlier, from people whose incentives you understand. That is why so many good private deals never reach an open process: they move through relationships first.',
+      'Building that kind of flow is slow. It depends on being in rooms where the people around you invest their own capital and have a reason to share.',
+    ],
+  },
+  {
+    slug: 'lp-vs-gp',
+    pillar: 'capital',
+    date: '18 September 2026',
+    read: 3,
+    title: 'LP vs GP: who does what in a private fund',
+    lede: 'Two roles, one structure. Knowing who decides, who funds and how each side is paid makes every fund conversation clearer.',
+    body: [
+      'Most private funds are built as limited partnerships. The structure has two sides, and they play very different roles.',
+      ['h', 'The general partner'],
+      'The GP is the manager. It raises the fund, finds and makes the investments, runs the portfolio and decides when to sell. It also carries the legal responsibility for the fund. GPs usually commit some of their own money to align with investors, often a small percentage of the fund.',
+      ['h', 'The limited partners'],
+      'LPs provide most of the capital - family offices, pension funds, endowments, funds of funds and private investors. They commit an amount up front, which the GP calls over time as deals are made. Their liability is limited to what they committed, and they do not run the day-to-day investing.',
+      ['h', 'How each side is paid'],
+      'A common model is an annual management fee for running the fund and carried interest - a share of the profits once investors have received their capital back, often above an agreed minimum return. The exact numbers are negotiated in every fund.',
+      ['q', 'LPs choose the manager. The GP chooses the deals.'],
+      'For an investor, the practical question is which side of the table you want to be on for a given strategy - and, if you are the LP, how much influence you need over what the GP does.',
+    ],
+  },
+  {
+    slug: 'primary-vs-secondary',
+    pillar: 'capital',
+    date: '11 September 2026',
+    read: 2,
+    title: 'Primary vs secondary: two ways into the same asset',
+    lede: 'In a primary, new money goes into the company or fund. In a secondary, you buy a stake someone already owns.',
+    body: [
+      'Both routes can give you exposure to the same business or fund. What changes is who receives your money and what you know at the moment you invest.',
+      ['h', 'Primary'],
+      'In a primary transaction the capital goes to the company or the fund itself - new shares in a funding round, or a new commitment to a fund. It finances what happens next.',
+      ['h', 'Secondary'],
+      'In a secondary you buy an existing position from a current holder - an early shareholder, an employee or an LP who wants liquidity before the fund ends. The company or fund does not receive new money.',
+      ['q', 'A primary funds the future. A secondary prices the past.'],
+      ['h', 'Why investors use secondaries'],
+      'A secondary often means a portfolio you can already see, a shorter time to cash back and a price set against an existing valuation - sometimes at a discount, sometimes at a premium. The trade-off is that information is uneven: the seller usually knows the asset better than the buyer.',
+    ],
+  },
+  {
+    slug: 'you-do-not-need-more-contacts',
+    pillar: 'pov',
+    date: '4 September 2026',
+    read: 2,
+    title: 'You do not need more contacts',
+    lede: 'More profiles are not more value. The real advantage is reducing the distance between a live investor need and the right person.',
+    body: [
+      'Most investors already have thousands of connections. Very few of them are useful on the day a real need appears - a co-investor for a deal closing next month, an LP for a new vehicle, an operator who has done it before.',
+      ['h', 'Relevance beats reach'],
+      'The value of a network is not its size. It is how quickly the right person appears when you need them, and how much you can trust them when they do.',
+      ['q', 'The world is getting faster. Trust is not.'],
+      ['h', 'Why Legends is small on purpose'],
+      'That is why Legends is built around selection rather than volume: investors only, membership by approval, sector groups online and private dinners of ten in each city. Fewer people, each one there for a reason.',
+    ],
+  },
+];
+
+export const article = (slug) => ARTICLES.find((a) => a.slug === slug);

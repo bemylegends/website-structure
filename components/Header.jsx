@@ -1,61 +1,26 @@
-'use client';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import Arrow from './Arrow';
+import { ApplyButton } from './ApplyModal';
 
-const NAV = [
-  ['/how', 'How it works'],
-  // ['/deals', 'Deal flow'],  — hidden for now, page kept in app/_hidden/deals
-  ['/membership', 'Membership'],
-  ['/events', 'Events'],
-  ['/knowledge', 'Knowledge'],
-  ['/about', 'About'],
-];
+const Arr = () => <svg className="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
+export const NAV = [['/events', 'Events'], ['/blog', 'Blog']];
 
-export default function Header() {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-  useEffect(() => { setOpen(false); }, [pathname]);
-  useEffect(() => { document.body.style.overflow = open ? 'hidden' : ''; }, [open]);
-
-  const isOn = (href) => pathname === href || pathname.startsWith(href + '/');
-
+// dark: transparent over the home hero, turns light once you scroll past it.
+export default function Header({ dark = false, cta = null }) {
+  const Cta = ({ className }) => (cta ? <a className={className} href={cta.href}>{cta.label} <Arr /></a> : <ApplyButton className={className}>Apply to join <Arr /></ApplyButton>);
   return (
     <>
-      <header className={'hdr' + (scrolled ? ' scrolled' : '')}>
-        <div className="hdr-in">
-          <Link className="brand" href="/" aria-label="Legends home">
-            {/* TODO: replace with the official SVG lockup for light backgrounds */}
-            <img src="/brand/symbol.png" alt="" />
-            <span><b>LEGENDS</b><small>PRIVATE INVESTOR NETWORK</small></span>
-          </Link>
-          <nav className="nav" aria-label="Main">
-            {NAV.map(([href, label]) => (
-              <Link key={href} href={href} className={isOn(href) ? 'on' : ''}>{label}</Link>
-            ))}
-          </nav>
-          <div className="hdr-act">
-            <Link className="login" href="/login">Log in</Link>
-            <Link className="btn" href="/apply">Apply to join <Arrow /></Link>
-            <button className="burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M4 8h16M4 16h16" /></svg>
-            </button>
-          </div>
+      <header className={'hdr' + (dark ? ' dark' : '')}><div className="hdr-in">
+        <a className="brand" href="/"><img src="/brand/symbol.png" alt="" /><b>LEGENDS</b></a>
+        <nav className="nav">{NAV.map(([h, t]) => <a key={h} href={h}>{t}</a>)}</nav>
+        <div className="hdr-act">
+          <ApplyButton mode="login" className="hdr-login">Member login</ApplyButton>
+          <Cta className="btn gold hdr-cta" />
+          <button type="button" className="burger" aria-label="Menu" aria-expanded="false"><i /><i /></button>
         </div>
-      </header>
-      <nav className={'mnav' + (open ? ' open' : '')} aria-label="Mobile">
-        {NAV.map(([href, label]) => <Link key={href} href={href}>{label}</Link>)}
-        <Link href="/login">Log in</Link>
-        <Link className="btn gold" href="/apply">Apply to join</Link>
+      </div></header>
+      <nav className="mnav">
+        {NAV.map(([h, t]) => <a key={h} href={h}>{t}</a>)}
+        <button type="button" className="mnav-login" data-open="login">Member login</button>
+        <Cta className="btn gold" />
       </nav>
     </>
   );

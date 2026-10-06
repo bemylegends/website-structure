@@ -1,65 +1,24 @@
-// Source: belegends.club/events (titles kept exactly as on the live site).
-// Covers are hot-linked; copy them into /public before production.
-const L = 'https://belegends.club';
-
+// Upcoming offline events. Each one has its own landing on legends.app/events/<slug>/.
+// To add a dinner: copy an entry, change the fields, keep the list in date order.
 export const EVENTS = [
-  { slug: 'after-20-investments-what-makes-me-say-yes', upcoming: true, online: true,
-    format: 'Online InvestHack', date: 'Tue, 29 Sept 2026 · 17:00 GST',
-    title: 'How a $200M+ Family Office Decides What Gets a $1–10M Direct Investment',
-    speaker: 'Alex Felman', role: 'General Partner, Family Office Investor · Scientist & Educator',
-    img: `${L}/api/files/pbc_1687431684/8orlny5gc6hpprk/how_200_m_family_office_decides_what_gets_1_10_m_direct_investment_bd2byiyiet.png` },
+  { slug: 'singapore-081026', city: 'Singapore', day: 8, dow: 'Thu', month: 'October', iso: '2026-10-08', week: 'Milken Institute Asia Summit', heroWeek: 'the investment week' },
+  { slug: 'dubai-141026', city: 'Dubai', day: 14, dow: 'Wed', month: 'October', iso: '2026-10-14', week: 'SuperReturn Middle East' },
+  { slug: 'abu-dhabi-211026', city: 'Abu Dhabi', day: 21, dow: 'Wed', month: 'October', iso: '2026-10-21', week: 'Campden Congress' },
+  { slug: 'riyadh-281026', city: 'Riyadh', day: 28, dow: 'Wed', month: 'October', iso: '2026-10-28', week: 'FII10' },
+].map((e) => ({ ...e, time: '17:00-20:00', seats: 10, url: `/events/${e.slug}`, heroWeek: e.heroWeek || `${e.week} week` }));
 
-  { slug: 'how-a-startup-with-no-revenue-raises-up-to-2-5m', online: true, format: 'Online InvestHack', date: 'Tue, 22 Sept 2026',
-    title: 'How a Startup With No Revenue Raises Up to €2.5M', speaker: 'Janneke Niessen', role: 'Founding Partner, CapitalT · Serial Entrepreneur & Investor',
-    img: `${L}/api/files/pbc_1687431684/kwj6ys0yl8rpp2z/84lqdbvecvo_jxfp00qtbs.png` },
-  { slug: 'how-to-spot-real-companies-in-the-age-of-ai', online: true, format: 'Online InvestHack', date: 'Tue, 15 Sept 2026',
-    title: 'How a 30-Year Tech Founder Spots Real Companies Behind AI-Perfect Pitches', speaker: 'Walied Albasheer', role: 'Founder & Managing Partner · Serial Entrepreneur, AI & Venture Capital',
-    img: `${L}/api/files/pbc_1687431684/vl5gdqr1s6vdjjp/walied_albasheer_6at4u98zk4.png` },
-  { slug: 'one-business-hundreds-of-independent-minds', online: true, format: 'Online InvestHack', date: 'Tue, 8 Sept 2026',
-    title: 'How to Profit as a Human in an Unforgiving AI World', speaker: 'Varun Malik', role: 'Founder & CEO, Konsälidön',
-    img: `${L}/api/files/pbc_1687431684/senl9tnhxv04zgw/varun_prev_f85bcua4y1.jpg` },
-  { slug: 'ownership-culture-and-care', online: true, format: 'Online Speaker session', date: 'Tue, 25 Aug 2026',
-    title: 'How to Build Ownership Culture & Care: Insights from 200+ Scale-Up Companies', speaker: 'Julius Bachmann', role: 'Founder, Bachmann Catalyst',
-    img: 'https://images.lumacdn.com/uploads/bs/ac902c55-d881-468b-bfdb-320677d8a8ec.png' },
-  { url: 'https://luma.com/gxeiw4sg', online: true, format: 'Online Speaker session', date: 'Tue, 11 Aug 2026',
-    title: 'Legends InvestHack #1: How to Build 2B$ Company And Manage 650k+ People', speaker: 'Vijay Sivaram', role: 'Co-Founder, RVAI Global',
-    img: 'https://images.lumacdn.com/uploads/2o/559112b4-ca42-4a7d-bfe8-66797fbb0833.png' },
-  { url: 'https://luma.com/2uelini6', online: true, format: 'Online Speaker session', date: 'Thu, 30 Jul 2026',
-    title: 'Inside the Family Office: How Patient Capital Decides', speaker: 'Abhineet Singh', role: 'CIO, Al Siraj Holdings',
-    img: 'https://images.lumacdn.com/uploads/sx/b253d992-9e8f-48f5-b19e-2ce299ddee0c.png' },
-  { url: 'https://luma.com/au6shx7n', online: true, format: 'Online Speaker session', date: 'Thu, 23 Jul 2026',
-    title: 'AI in the Enterprise: An Investor’s View', speaker: 'Radhesh Kanumury', role: 'Managing Partner, Suvan Ventures',
-    img: 'https://images.lumacdn.com/uploads/f1/589abc2d-6f41-4c2f-b9d2-dc4b90c88713.png' },
-  { url: 'https://luma.com/0bpr2u1i', online: true, format: 'Online networking', date: 'Thu, 4 Jun 2026',
-    title: 'Opening | Private Founders & CEOs Online Networking | $1M+ Revenue Operators | Zoom', speaker: 'Yanis Chkhatval', role: 'Founder, Legends',
-    img: 'https://images.lumacdn.com/uploads/mq/8fd45b4c-0a1e-4620-9e8a-362b0f5dece5.png' },
-  { url: 'https://luma.com/5gxj0edv', online: false, format: 'In person · Dubai', date: 'Wed, 11 Mar 2026',
-    title: 'Private Founders and Investors ONLY Networking Dinner. $5M–50M Revenue | 8 Seats | CityWalk, Dubai',
-    img: 'https://images.lumacdn.com/event-covers/8h/5df7222a-61e2-4b98-8d0a-48c753506dea.png' },
-  { url: 'https://luma.com/wm2cnsor', online: false, format: 'In person · Dubai', date: 'Tue, 10 Mar 2026',
-    title: 'Private Founders & CEOs Networking Dinner. $1M–5M Revenue Leaders | 8 Seats | BlueWaters, Dubai',
-    img: 'https://images.lumacdn.com/event-covers/go/4246de9c-9ea4-4ac0-b088-48713ac3385b.png' },
-  { url: 'https://luma.com/tqezkgzp', online: false, format: 'In person · Dubai', date: 'Wed, 4 Mar 2026',
-    title: 'Private Founders & CEOs Networking Dinner. $30M–100M Revenue Leaders | 8 Seats | BlueWaters, Dubai',
-    img: 'https://images.lumacdn.com/event-covers/sz/6e2bd345-02fb-4a82-bcc7-462dc155f00b.png' },
-  { url: 'https://luma.com/t5mz36t1', online: false, format: 'In person · Dubai', date: 'Tue, 3 Mar 2026',
-    title: 'Private Founders & CEOs Networking Dinner. $5M–30M Revenue Leaders | 8 Seats | BlueWaters, Dubai',
-    img: 'https://images.lumacdn.com/event-covers/up/3be01720-678f-421b-b083-618f0866989d.png' },
-  { url: 'https://luma.com/ljn82zc1', online: false, format: 'In person · Dubai', date: 'Wed, 25 Feb 2026',
-    title: 'Exclusive Founders & CEO’s Roundtable | 8 Seats Only | $1M+ Revenue Leaders',
-    img: 'https://images.lumacdn.com/event-covers/0z/e029a7d5-9ca7-422b-a6ef-30fa356b061f.png' },
-  { url: 'https://luma.com/r7z7hy3x', online: false, format: 'In person · Dubai', date: 'Tue, 24 Feb 2026',
-    title: 'Exclusive Founders & CEO’s Roundtable | 8 Seats Only | $1M+ Revenue Leaders',
-    img: 'https://images.lumacdn.com/event-covers/od/1b39359a-ad42-423a-acfb-d8fb3fe07b07.png' },
-  { url: 'https://luma.com/2zrzkgam', online: false, format: 'In person · Dubai', date: 'Thu, 19 Feb 2026',
-    title: 'Private Networking Event | 8 Seats for Founders & Senior Executives ($1M+ Revenue)',
-    img: 'https://images.lumacdn.com/event-covers/zg/cbc33b3e-536d-4bd5-ad66-fc061efde2d1.png' },
-  { url: 'https://luma.com/u4r9w7tb', online: false, format: 'In person · Dubai', date: 'Tue, 10 Feb 2026',
-    title: 'Private Networking Event | 8 Seats for Founders & Senior Executives ($1M+ Revenue)',
-    img: 'https://images.lumacdn.com/event-covers/zg/cbc33b3e-536d-4bd5-ad66-fc061efde2d1.png' },
+export const event = (slug) => EVENTS.find((e) => e.slug === slug);
+export const DOW = { Mon: 'Mon', Tue: 'Tue', Wed: 'Wed', Thu: 'Thu', Fri: 'Fri' };
+// shared media used on every dinner page
+export const MEDIA = 'https://legends.app/events/shared';
+
+export const SCHEDULE = [
+  ['17:00', 'Arrival', 'Meet the other nine investors.'],
+  ['17:30', 'Introductions', 'Who you are, what you invest in.'],
+  ['18:00', 'Asks & gives', 'What you need. What you can offer.'],
+  ['18:30', 'Dinner', 'Deals, market views, open conversation.'],
+  ['20:00', 'Close', 'The network continues after dinner.'],
 ];
 
-export const UPCOMING = EVENTS.filter((e) => e.upcoming);
-export const PAST = EVENTS.filter((e) => !e.upcoming);
-export const eventHref = (e) => (e.slug ? `/events/${e.slug}` : e.url);
-export const isExternal = (e) => !e.slug;
+// Events that have not ended yet (the day itself still counts as upcoming).
+export const upcoming = (now = new Date()) => EVENTS.filter((e) => new Date(e.iso + 'T23:59:59Z') >= now);

@@ -1,11 +1,10 @@
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Reveal from '@/components/Reveal';
+import ApplyModal from '@/components/ApplyModal';
+import Interactions from '@/components/Interactions';
 
 export const metadata = {
-  title: 'Legends — Private investor network',
-  description: 'A private network for people who deploy capital. Co-investors, deals and introductions matched to your thesis.',
+  title: 'Legends - Private Investors Network',
+  description: 'Rare, high-quality deals from investors. Co-investment. Additional capital. Private events. Membership by approval.',
 };
 
 export default function RootLayout({ children }) {
@@ -17,10 +16,9 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <Header />
-        <main id="top">{children}</main>
-        <Footer />
-        <Reveal />
+        {children}
+        <ApplyModal />
+        <Interactions />
       </body>
     </html>
   );

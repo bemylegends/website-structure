@@ -1,22 +1,101 @@
-import ApplyFaq from '@/components/ApplyFaq';
-import Benefits from '@/components/Benefits';
-import Founder from '@/components/Founder';
-import Hero from '@/components/Hero';
-import HomeEvents from '@/components/HomeEvents';
-import HomeKnowledge from '@/components/HomeKnowledge';
-import HowSteps from '@/components/HowSteps';
-import Inside from '@/components/Inside';
-import Proof from '@/components/Proof';
-import Stance from '@/components/Stance';
-import Tracks from '@/components/Tracks';
+import Skyline from '@/components/Skyline';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Join from '@/components/Join';
+import { ApplyButton } from '@/components/ApplyModal';
+import { Upcoming, OnlineCard, EssayTile } from '@/components/Cards';
+import { upcoming } from '@/data/events';
+import { ONLINE_NEXT } from '@/data/online';
+import { ESSAYS } from '@/data/blog';
 
-export const metadata = { title: "Legends \u2014 Private investor network" };
+const Arr = ({ c = 'arr' }) => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
 
-export default function Page() {
+const WAYS = [
+  ['Online by sector', 'Members meet in sector groups to share deals, mandates and market views with investors who work in the same space.'],
+  ['In person by city', 'Private dinners for ten investors in the cities where capital meets - during the weeks when the right people are already in town.'],
+  ['Connected through our platform', 'Deals, asks and introductions in one place, so the right person is easy to reach between events.'],
+];
+const GIVES = [
+  ['Deal flow', 'Opportunities shared by investors, often before they reach an open process.'],
+  ['Co-investment', 'Partners for the deals you are already working on.'],
+  ['Additional capital', 'Capital for what you are building, from people who understand it.'],
+  ['Private events', 'Small, selected tables in key investor cities and live sessions online.'],
+];
+
+export default function Home() {
+  const events = upcoming();
   return (
     <>
-      <Hero /><Founder /><HowSteps /><Benefits /><Tracks /><Stance /><Proof /><HomeEvents />
-      <HomeKnowledge /><ApplyFaq /><Inside />
+      <Header />
+
+      {/* ===== Hero ===== */}
+      <section className="gate">
+        <Skyline />
+        <main className="g-main">
+          <span className="g-rule" aria-hidden="true" />
+          <p className="g-kicker">Investors only</p>
+          <h1>Private Investors<br /><em>Network</em></h1>
+          <p className="g-lead"><span>Rare, high-quality deals from investors.</span> <span>Co-investment. Additional capital. Private events.</span></p>
+          <div className="g-cta">
+            <ApplyButton className="g-btn">Apply to join <Arr /></ApplyButton>
+            <span className="g-note"><i />Membership by approval</span>
+          </div>
+        </main>
+      </section>
+
+      {/* ===== About ===== */}
+      <section className="sec about" id="about"><div className="wrap">
+        <p className="lit" data-lit>
+          You do not need more contacts. / You need the right ones. Legends brings together the people who deploy capital -
+          private investors, family offices, fund managers, GPs, LPs and allocators.
+        </p>
+        <div className="ways">
+          {WAYS.map(([h, p], i) => (
+            <div key={h} className={'way rv d' + i}><h3>{h}</h3><p>{p}</p></div>
+          ))}
+        </div>
+        <ul className="gives">
+          {GIVES.map(([h, p], i) => <li key={h} className={'rv d' + i}><b>{h}</b><span>{p}</span></li>)}
+        </ul>
+      </div></section>
+
+      <div className="mq" aria-hidden="true"><div className="mq-in" data-drift>SINGAPORE · DUBAI · ABU DHABI · RIYADH · LONDON · NEW YORK · ZURICH · PALM BEACH · ONLINE ·</div></div>
+
+      {/* ===== Events ===== */}
+      <section className="sec" id="events"><div className="wrap">
+        <div className="sec-head rv">
+          <h2 className="h2">Events</h2>
+          <p className="lead">In person in key investor cities, online every month. Small rooms, selected guests, no stage and no pitches.</p>
+        </div>
+
+        <div className="track rv">
+          <div className="track-h"><h3>In person</h3><p>Private dinners for ten investors, in the week a major investor event brings the right people to town.</p></div>
+        </div>
+        <Upcoming events={events} />
+
+        <div className="track rv" style={{ marginTop: 'clamp(48px,6vw,80px)' }}>
+          <div className="track-h"><h3>Online</h3><p>Legends Online - a monthly live session with a top investor, then a closed discussion with the room.</p></div>
+        </div>
+        <div className="rv"><OnlineCard s={ONLINE_NEXT} /></div>
+
+        <a className="more rv" href="/events">All events <Arr c="" /></a>
+      </div></section>
+
+      {/* ===== Blog ===== */}
+      <section className="sec" id="blog" style={{ paddingTop: 0 }}><div className="wrap">
+        <div className="sec-head rv">
+          <h2 className="h2">From the blog</h2>
+          <p className="lead">Essays by the investors and operators who speak at Legends - how they decide, what they look for and what they learned the hard way.</p>
+        </div>
+        <div className="et-grid">
+          <div className="rv"><EssayTile e={ESSAYS[0]} big /></div>
+          {ESSAYS.slice(1, 3).map((e, i) => <div key={e.url} className={'rv d' + (i + 1)}><EssayTile e={e} /></div>)}
+        </div>
+        <a className="more rv" href="/blog">All stories <Arr c="" /></a>
+      </div></section>
+
+      <Join />
+      <Footer />
     </>
   );
 }
